@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         const { state, saveCreds } = await useMultiFileAuthState(dirs);
 
         try {
-            let MalvinTechInc = makeWASocket({
+            let Nerdk-tech = makeWASocket({
                 auth: {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -69,14 +69,14 @@ router.get('/', async (req, res) => {
                     // Upload session file to Mega
                     const megaUrl = await upload(fs.createReadStream(`${dirs}/creds.json`), `${generateRandomId()}.json`);
                     let stringSession = megaUrl.replace('https://mega.nz/file/', ''); // Extract session ID from URL
-                    stringSession = 'MALVIN~' + stringSession;  // Prepend your name to the session ID
+                    stringSession = 'KTECH~' + stringSession;  // Prepend your name to the session ID
 
                     // Send the session ID to the target number
                     const userJid = jidNormalizedUser(num + '@s.whatsapp.net');
                     await MalvinTechInc.sendMessage(userJid, { text: stringSession });
 
                     // Send confirmation message
-                    await MalvinTechInc.sendMessage(userJid, { text: 'Hello MALVIN-XD User! 👋🏻*\n\n> Do not share your session ID with anyone.\n\n*Thanks for using MALVIN-XD 🚩*\n\n> Join WhatsApp Channel: ⤵️\nhttps://whatsapp.com/channel/0029VbA6MSYJUM2TVOzCSb2A\n\nFork the repo ⬇️\nhttps://github.com/XdKing2/MALVIN-XD\n\n> *© Powered BY Malvin King*'});
+                    await MalvinTechInc.sendMessage(userJid, { text: 'Hello TANJIRO-V1 User! 👋🏻*\n\n> Do not share your session ID with anyone.\n\n*Thanks for using TANJIRO V1  🚩*\n\n> Join WhatsApp Channel: ⤵️\nhttps://whatsapp.com/channel/0029VazHPYwBqbr9HjXrc50m\n\nFork the repo ⬇️\nhttps://github.com/Nerdk-tech/TANJIRO-V1\n\n> *© Powered BY Nerdk tech*'});
                     
                     // Clean up session after use
                     await delay(100);
